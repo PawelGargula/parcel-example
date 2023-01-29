@@ -5,14 +5,15 @@
 // Push this file after when changed resources are already deployed in server
 const cacheName = 'resources-2023-01-29_12:36';
 
-console.log(location);
-
 const addResourcesToCache = async (resources) => {
     const cache = await caches.open(cacheName);
     await cache.addAll(resources);
 };
 
-const folderName = location.href;
+const path = `${location.pathname.split('/')[0]}/${location.pathname.split('/')[1]}`;
+const origin = `${location.origin}${path}`;
+console.log(origin);
+
 self.addEventListener("install", (event) => {
     event.waitUntil(
         addResourcesToCache([
