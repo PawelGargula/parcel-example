@@ -1,0 +1,1 @@
+{"mappings":"AAEAA,QAAQC,IAAI,aCFaD,QAAQC,IAAI","sources":["src/main.js","src/js/button.js"],"sourcesContent":["import logMessage from \"./js/button\";\r\n\r\nconsole.log(\"I am main\");\r\nlogMessage();","const logMessage = () => console.log(\"I am button\");\r\n\r\nexport default logMessage;"],"names":["console","log"],"version":3,"file":"index.a6aace1c.js.map"}
