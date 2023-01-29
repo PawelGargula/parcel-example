@@ -10,7 +10,7 @@ const addResourcesToCache = async (resources) => {
     await cache.addAll(resources);
 };
 
-const path = `${location.pathname.split('/')[0]}/${location.pathname.split('/')[1]}`;
+const path = `${location.pathname.split('/')[0]}/${location.pathname.split('/')[1]}/`;
 const origin = `${location.origin}${path}`;
 console.log(origin);
 
@@ -18,11 +18,11 @@ self.addEventListener("install", (event) => {
     event.waitUntil(
         addResourcesToCache([
             // paths needs to be written relative to the origin, not app's root directory
-            `${folderName}`,
-            `${folderName}index.html`,
-            `${folderName}index.bf1cb1bb.css`,
-            `${folderName}index.2b58eb09.js`,
-            `${folderName}index.b706d930.js`,
+            `${origin}`,
+            `${origin}index.html`,
+            `${origin}index.bf1cb1bb.css`,
+            `${origin}index.2b58eb09.js`,
+            `${origin}index.b706d930.js`,
         ])
     );
 });
