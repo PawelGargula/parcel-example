@@ -3,23 +3,28 @@
 // and remove old one in our Cache Storage
 // naming convension is: resources-yy-mm-dd_hh:mm
 // Push this file after when changed resources are already deployed in server
-const cacheName = 'resources-2023-01-29_12:26';
+const cacheName = 'resources-2023-01-29_12:36';
 
 const addResourcesToCache = async (resources) => {
     const cache = await caches.open(cacheName);
     await cache.addAll(resources);
 };
 
-const folderName = location.pathname;
+const pathName = location.pathname;
+const path = pathName === '/'
+    ? '/'
+    : `${pathName.split('/')[0]}/${pathName.split('/')[1]}/`;
+const origin = `${location.origin}${path}`;
+
 self.addEventListener("install", (event) => {
     event.waitUntil(
         addResourcesToCache([
             // paths needs to be written relative to the origin, not app's root directory
-            `/${folderName}/`,
-            `/${folderName}/index.html`,
-            `/${folderName}/index.bf1cb1bb.css`,
-            `/${folderName}/index.0280328a.js`,
-            `/${folderName}/index.a6aace1c.js`,
+            `${origin}`,
+            `${origin}index.html`,
+            `${origin}index.bf1cb1bb.css`,
+            `${origin}index.2b58eb09.js`,
+            `${origin}index.b706d930.js`,
         ])
     );
 });

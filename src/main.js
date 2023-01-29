@@ -7,7 +7,7 @@ const registerServiceWorker = async () => {
     if ('serviceWorker' in navigator) {
         try {
             // path needs to be written relative to the origin, app's root directory
-            const registration = await navigator.serviceWorker.register(`/${location.pathname}/sw.js`);
+            const registration = await navigator.serviceWorker.register(`${location.href}sw.js`);
             if (registration.installing) {
                 console.log('Service worker installing');
             } else if (registration.waiting) {
