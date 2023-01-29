@@ -1,0 +1,2 @@
+!function(){console.log("I am main"),console.log("I am button");(async()=>{if("serviceWorker"in navigator)try{const o=await navigator.serviceWorker.register(`/${location.pathname}/sw.js`);o.installing?console.log("Service worker installing"):o.waiting?console.log("Service worker installed"):o.active&&console.log("Service worker active")}catch(o){console.error(`Registration failed with ${o}`)}})()}();
+//# sourceMappingURL=index.0993f7df.js.map

@@ -562,6 +562,18 @@ var _button = require("./js/button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 console.log("I am main");
 (0, _buttonDefault.default)();
+const registerServiceWorker = async ()=>{
+    if ("serviceWorker" in navigator) try {
+        // path needs to be written relative to the origin, app's root directory
+        const registration = await navigator.serviceWorker.register(`/${location.pathname}/sw.js`);
+        if (registration.installing) console.log("Service worker installing");
+        else if (registration.waiting) console.log("Service worker installed");
+        else if (registration.active) console.log("Service worker active");
+    } catch (error) {
+        console.error(`Registration failed with ${error}`);
+    }
+};
+registerServiceWorker();
 
 },{"./js/button":"ktwnG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ktwnG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
