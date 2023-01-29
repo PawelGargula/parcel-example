@@ -10,9 +10,11 @@ const addResourcesToCache = async (resources) => {
     await cache.addAll(resources);
 };
 
-const path = `${location.pathname.split('/')[0]}/${location.pathname.split('/')[1]}/`;
+const pathName = location.pathname;
+const path = pathName === '/'
+    ? '/'
+    : `${pathName.split('/')[0]}/${pathName.split('/')[1]}/`;
 const origin = `${location.origin}${path}`;
-console.log(origin);
 
 self.addEventListener("install", (event) => {
     event.waitUntil(
