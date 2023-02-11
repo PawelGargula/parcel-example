@@ -3,7 +3,8 @@
 // and remove old one in our Cache Storage
 // naming convension is: resources-yy-mm-dd_hh:mm
 // Push this file after when changed resources are already deployed in server
-const cacheName = 'resources-2023-01-29_12:36';
+const cacheKey = 'parcel-example';
+const cacheName = `${cacheKey}-resources-2023-01-29_12:36`;
 
 const addResourcesToCache = async (resources) => {
     const cache = await caches.open(cacheName);
@@ -45,10 +46,10 @@ const deleteCache = async key => {
     await caches.delete(key)
 }
 
+// delete only when incudes key for example it can be our orgin variable + date
 const deleteOldCaches = async () => {
-    const cacheKeepList = [cacheName];
-    const keyList = await caches.keys()
-    const cachesToDelete = keyList.filter(key => !cacheKeepList.includes(key))
+    const keyList = await caches.keys();
+    const cachesToDelete = keyList.filter(key => key !== cacheName && key.startsWith(cacheKey));
     await Promise.all(cachesToDelete.map(deleteCache));
 }
 
